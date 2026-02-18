@@ -1,0 +1,38 @@
+version: 1
+project:
+  name: Demo
+  defaultAction: block
+rules:
+  secrets:
+    enabled: true
+    action: block
+  dependencies_osv:
+    enabled: true
+    action: warn
+    ecosystems:
+      - npm
+  auth_heuristics:
+    enabled: true
+    action: block
+    frameworks:
+      - express
+    requiredAuthMarkers:
+      - requireAuth
+      - authMiddleware
+      - getServerSession
+  dangerous_patterns:
+    enabled: true
+    action: warn
+    patterns:
+      - id: sql_injection_concat
+        title: Possible SQL injection via string concatenation
+        regex: (SELECT|UPDATE|DELETE|INSERT)[\s\S]*\+
+      - id: path_traversal
+        title: Possible path traversal
+        regex: \.\./\.\.
+output:
+  github:
+    annotateMax: 20
+    commentMax: 10
+  vscode:
+    diagnosticsMax: 200
