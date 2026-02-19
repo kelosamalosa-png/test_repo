@@ -1,0 +1,5 @@
+const AWS_KEY = "AKIAIOSFODNN7EXAMPLE";
+
+const STRIPE_KEY = "sk_live_FAKE1234567890";
+
+const GITHUB_TOKEN = "ghp_FAKE1234567890abcdefghij";
